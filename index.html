@@ -585,9 +585,25 @@
         <div class="noscript fixed-top">请开启 JavaScript</div>
     </noscript>
     <!-- JS -->
-    <audio autoplay>
+    <audio id="myAudio" autoplay>
         <source src="https://api.vvhan.com/api/rand.music?sort=热歌榜" type="audio/mpeg">
     </audio>
+    <script>
+        var audio = document.getElementById("myAudio");
+        audio.addEventListener("ended", function() {
+          playNextSong();
+        });
+      
+        function playNextSong() {
+          // 这里写下一首歌曲的逻辑
+          // 例如，你可以使用API获取下一首歌曲的URL并将其设置为音乐源
+          var nextSongUrl = "https://api.vvhan.com/api/rand.music?sort=热歌榜";
+          audio.src = nextSongUrl;
+          audio.play();
+        }
+      
+        audio.play();
+    </script>
     <script src='https://api.vvhan.com/api/snow'></script>
     <script type="text/javascript" src="./js/main.js"></script>
     <script type="text/javascript" src="./js/set.js"></script>
